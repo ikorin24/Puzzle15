@@ -83,51 +83,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\15.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\9.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="img\img8.png" />
   </ItemGroup>
   <ItemGroup>
