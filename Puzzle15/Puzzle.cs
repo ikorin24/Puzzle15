@@ -55,10 +55,7 @@ namespace Puzzle15
         {
             var random = new Random(seed);
             const int swapCount = 50 * 2;
-
-
             var nums = Enumerable.Range(0, _cells.Length).ToArray();
-
             for (int i = 0; i < swapCount; i++)
             {
                 var a = random.Next() % nums.Length;
@@ -67,9 +64,6 @@ namespace Puzzle15
 
                 (nums[a], nums[b]) = (nums[b], nums[a]);
             }
-
-
-
             foreach (var (x, i) in nums.Select((p, i) => (p, i)))
             {
                 _cells[x].Position = new Point(i % ColumnCount, i / RowCount);

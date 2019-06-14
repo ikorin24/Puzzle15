@@ -30,9 +30,26 @@
 
     Public Sub Shuffle(seed As Integer)
         Dim rand = New Random(seed)
-        Dim nums = Enumerable.Range(0, _cells.Length).Select(Function(x) Tuple.Create(x, rand.Next())).OrderBy(Function(x) x.Item2).Select(Function(x, i) Tuple.Create(x.Item1, i))
-        For Each num In nums
-            _cells(num.Item1).Position = New Point(num.Item2 Mod ColumnCount, num.Item2 \ RowCount)
+        'Dim nums = Enumerable.Range(0, _cells.Length).Select(Function(x) Tuple.Create(x, rand.Next())).OrderBy(Function(x) x.Item2).Select(Function(x, i) Tuple.Create(x.Item1, i))
+        'For Each num In nums
+        '    _cells(num.Item1).Position = New Point(num.Item2 Mod ColumnCount, num.Item2 \ RowCount)
+        'Next
+        Const swapCount As Integer = 50 * 2
+        Dim nums = Enumerable.Range(0, _cells.Length).ToArray()
+        For i = 0 To swapCount - 1
+            Dim a = rand.Next() Mod nums.Length
+            Dim b = rand.Next() Mod (nums.Length - 1)
+            If b >= a Then
+                b += 1
+            End If
+
+            Dim tmp = nums(a)
+            nums(a) = nums(b)
+            nums(b) = tmp
+        Next
+
+        For Each x In nums.Select(Function(p, i) Tuple.Create(p, i))
+            _cells(x.Item1).Position = New Point(x.Item2 Mod ColumnCount, x.Item2 \ RowCount)
         Next
         _emptyCell.Position = New Point(ColumnCount - 1, RowCount - 1)
         If IsCompleted() Then
