@@ -22,8 +22,8 @@ namespace Puzzle15
         public const int CellPixelHeight = BitmapHeight / RowCount;
 
         private readonly Color _backColor = Color.Black;
-        private Cell[] _cells;
-        private EmptyCell _emptyCell;
+        private readonly Cell[] _cells;
+        private readonly EmptyCell _emptyCell;
 
         public event EventHandler ImageUpdated;
 
@@ -54,13 +54,25 @@ namespace Puzzle15
         public void Shuffle(int seed)
         {
             var random = new Random(seed);
-            var nums = Enumerable.Range(0, _cells.Length)
-                                  .Select(x => (x, random.Next()))
-                                  .OrderBy(x => x.Item2)
-                                  .Select((x, i) => new { A = x.x, B = i });
-            foreach (var num in nums)
+            const int swapCount = 50 * 2;
+
+
+            var nums = Enumerable.Range(0, _cells.Length).ToArray();
+
+            for (int i = 0; i < swapCount; i++)
             {
-                _cells[num.A].Position = new Point(num.B % ColumnCount, num.B / RowCount);
+                var a = random.Next() % nums.Length;
+                var b = random.Next() % (nums.Length - 1);
+                if (b >= a) b++;
+
+                (nums[a], nums[b]) = (nums[b], nums[a]);
+            }
+
+
+
+            foreach (var (x, i) in nums.Select((p, i) => (p, i)))
+            {
+                _cells[x].Position = new Point(i % ColumnCount, i / RowCount);
             }
             _emptyCell.Position = new Point(ColumnCount - 1, RowCount - 1);
             if (IsCompleted()) { Shuffle(seed + 1); }
