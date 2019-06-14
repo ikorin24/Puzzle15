@@ -26,8 +26,9 @@ namespace Puzzle15
             _puzzle.Shuffle();
             _puzzle.ImageUpdated += (_, __) =>
             {
-                PctPuzzle.Image = null;
-                PctPuzzle.Image = _puzzle.Image;
+                PctPuzzle.Invalidate();
+                //PctPuzzle.Image = null;
+                //PctPuzzle.Image = _puzzle.Image;
             };
             PctPuzzle.Image = _puzzle.Image;
         }
